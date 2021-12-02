@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.7'
 
 # custom gems
 gem 'devise', '~> 4.7', '>= 4.7.2'
+gem 'httparty'
+gem 'json'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
