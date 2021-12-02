@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'albums/index'
+  resources :albums 
+
   devise_for :users
   root to: "albums#index"
   # get 'pages/index'
