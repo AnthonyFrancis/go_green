@@ -1,16 +1,13 @@
-class Album < ApplicationRecord
-  belongs_to :user
-
-  include HTTParty
+class User < ApplicationRecord
+	include HTTParty
 	base_uri 'https://jsonplaceholder.typicode.com'
 
 	def all
-		self.class.get("/albums" )
+		self.class.get("/users" )
 	end
 
-	def users
-		self.class.get("/users" )
-	end  	
+	has_many :albums
+  	
 	# def self.albums 
 	# 	response  = HTTParty.get('https://jsonplaceholder.typicode.com/albums')
 	# 	return JSON.parse(response.body)
