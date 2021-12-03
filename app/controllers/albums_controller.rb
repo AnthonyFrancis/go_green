@@ -4,6 +4,8 @@ class AlbumsController < ApplicationController
   def index
     @albums = Album.new.all
 
+    @users = Album.new.users
+
     # api = Album.new()
     # @albums = api.albums
   end

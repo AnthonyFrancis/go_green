@@ -1,10 +1,14 @@
-class Album # < ApplicationRecord
-
+class Album < ApplicationRecord
+	
 	include HTTParty
 	base_uri 'https://jsonplaceholder.typicode.com'
 
 	def all
 		self.class.get("/albums" )
+	end
+
+	def users
+		self.class.get("/users" )
 	end
   	
 	# def self.albums 
