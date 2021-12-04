@@ -1,33 +1,85 @@
 
 <% @album.each do |a| %>
-	<%= a["id"] %>
-	::
-	<%= a["title"] %>
+	<br />
+	<br />
 	<br />
 
-	<%= link_to "#{ @users.select { |user| user["id"] == a["userId"]}.pluck("name").join(', ')}", user_path(a["userId"]), class: "text text-gray-700 text-sm" %>
+	<!-- component -->
+<!-- eslint-disable -->
 
+    <div class="bg-white my-12 pb-6 w-full justify-center items-center overflow-hidden md:max-w-sm rounded-lg shadow-sm mx-auto">
+      <div class="relative h-40">
+        <img class="absolute h-full w-full object-cover" src="https://images.unsplash.com/photo-1448932133140-b4045783ed9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80">
+      </div>
+      <div class="relative shadow mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
+        <img class="object-cover w-full h-full" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=80">
+      </div>
+      <div class="mt-16">
+        <h1 class="text-lg text-center font-semibold">
+			<%= a["title"] %>
+        </h1>
+        <p class="text-sm text-gray-600 text-center">
+          <%= link_to "#{ @users.select { |user| user["id"] == a["userId"]}.pluck("name").join(', ')}", user_path(a["userId"]), class: "text text-gray-700 text-sm" %>
+        </p>
+        <p class="text-sm text-gray-600 text-center">
+          <%= link_to "#{ @users.select { |user| user["id"] == a["userId"]}.pluck("username").join(', ')}", user_path(a["userId"]), class: "text text-gray-700 text-sm" %>
+        </p>
+        <p class="text-sm text-gray-600 text-center">
+          <%= link_to "#{ @users.select { |user| user["id"] == a["userId"]}.pluck("email").join(', ')}", user_path(a["userId"]), class: "text text-gray-700 text-sm" %>
+        </p>
+   
+        <p class="text-sm text-gray-600 text-center">
+          <%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("address").pluck("street").join(', ') }" %>
+        </p>
 
-	<%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("email").join(', ')}" %>
+        <p class="text-sm text-gray-600 text-center">
+          <%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("address").pluck("suite").join(', ') }" %>
+        </p>
 
-	<%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("phone").join(', ')}" %>
+        <p class="text-sm text-gray-600 text-center">
+          <%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("address").pluck("city").join(', ') }" %>
+        </p>
 
+        <p class="text-sm text-gray-600 text-center">
+          <%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("address").pluck("zipcode").join(', ') }" %>
+        </p>
 
-	<%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("address").pluck("street").join(', ') }" %>
-	<%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("address").pluck("suite").join(', ') }" %>
-	<%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("address").pluck("city").join(', ') }" %>
-	<%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("address").pluck("zipcode").join(', ')}" %>
+        <p class="text-sm text-gray-600 text-center">
+          <%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("address").pluck("geo").pluck("lat").join(', ') }" %>
+        </p>
 
+        <p class="text-sm text-gray-600 text-center">
+          <%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("address").pluck("geo").pluck("lng").join(', ') }" %>
+        </p>
+
+        <p class="text-sm text-gray-600 text-center">
+          <%= link_to "#{ @users.select { |user| user["id"] == a["userId"]}.pluck("phone").join(', ')}", user_path(a["userId"]), class: "text text-gray-700 text-sm" %>
+        </p>
+        <p class="text-sm text-gray-600 text-center">
+          <%= link_to "#{ @users.select { |user| user["id"] == a["userId"]}.pluck("website").join(', ')}", user_path(a["userId"]), class: "text text-gray-700 text-sm" %>
+        </p>
+        <p class="text-sm text-gray-600 text-center">
+          <%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("company").pluck("name").join(', ') }" %>
+        </p>
+        <p class="text-sm text-gray-600 text-center">
+          <%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("company").pluck("catchPhrase").join(', ') }" %>
+        </p>
+        <p class="text-sm text-gray-600 text-center">
+          <%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("company").pluck("bs").join(', ') }" %>
+        </p>
+      </div>
+    </div>
 <% end %>
 
-
-<% @photos.each do |a| %>
-	<%= image_tag("#{a["thumbnailUrl"]}") %>
-<% end %>
-
-<%#= @album[0]["title"]  %>
-<%#= @album[0]["userId"]  %>
-<%#= @album[0]["title"]  %>
+<div class="container justify-center mx-auto">
+	<div class=" flex flex-wrap -mx-2 overflow-hidden sm:-mx-2 md:-mx-3 lg:-mx-2 xl:-mx-2">
+		<% @photos.each do |a| %>
+			<div class="my-2 px-2 w-full overflow-hidden sm:my-2 sm:px-2 sm:w-1/2 md:my-3 md:px-3 md:w-1/2 lg:my-2 lg:px-2 lg:w-1/5 xl:my-2 xl:px-2 xl:w-1/5">
+				<%= image_tag("#{a["thumbnailUrl"]}") %>
+			</div>
+		<% end %>
+	</div>
+</div>
 
 <div class="container mx-auto items-center text-center">
     <%= will_paginate @photos %>
