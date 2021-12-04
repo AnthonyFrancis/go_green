@@ -6,6 +6,11 @@ class User < ApplicationRecord
 		self.class.get("/users" )
 	end
 
+
+	def albums
+		self.class.get("/albums" )
+	end
+
 	has_many :albums
   	
 	# def self.albums 

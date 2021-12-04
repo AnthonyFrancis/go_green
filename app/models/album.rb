@@ -10,7 +10,13 @@ class Album < ApplicationRecord
 
 	def users
 		self.class.get("/users" )
-	end  	
+	end
+
+
+	def photos
+		self.class.get("/photos" )
+	end
+
 	# def self.albums 
 	# 	response  = HTTParty.get('https://jsonplaceholder.typicode.com/albums')
 	# 	return JSON.parse(response.body)

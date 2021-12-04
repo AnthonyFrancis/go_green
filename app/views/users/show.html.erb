@@ -1,2 +1,12 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<% @user.each do |user| %>
+	<%= user["id"] %>
+	::
+	<%= user["name"] %>
+<% end %>
+
+
+<% @albums.each do |album| %>
+	<%= album["title"] %>
+
+	<%= link_to "#{album["title"] }", album_path(album["id"]), class: "text text-gray-700 text-sm" %>
+<% end %>

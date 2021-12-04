@@ -4,9 +4,10 @@
       <div>
         <div class="pl-10">
           <div class="flex items-center">
+            <%= image_tag("#{ @photos.select { |a| a["albumId"] == album["id"]}.pluck("thumbnailUrl").first}") %>
               <div>
                 <p> 
-                  <%= link_to "#{ @user.select { |a| a["id"] == album["userId"]}.pluck("name").join(', ')}", user_path(album["userId"]), class: "text text-gray-700 text-sm" %>
+                  <%= link_to "#{ @users.select { |a| a["id"] == album["userId"]}.pluck("name").join(', ')}", user_path(album["userId"]), class: "text text-gray-700 text-sm" %>
                 </p>
               </div>
           </div>
@@ -26,10 +27,4 @@
   </div>
 </article>
   <%= album["userId"] %>
-<% end %>
-
-<% @user.each do |user| %>
-
-
-
 <% end %>

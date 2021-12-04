@@ -1,11 +1,31 @@
-<%#= @album[0]["title"]  %>
 
-<%#= @album[0]["userId"]  %>
 <% @album.each do |a| %>
 	<%= a["id"] %>
 	::
 	<%= a["title"] %>
 	<br />
+
+	<%= link_to "#{ @users.select { |user| user["id"] == a["userId"]}.pluck("name").join(', ')}", user_path(a["userId"]), class: "text text-gray-700 text-sm" %>
+
+
+	<%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("email").join(', ')}" %>
+
+	<%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("phone").join(', ')}" %>
+
+
+	<%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("address").pluck("street").join(', ') }" %>
+	<%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("address").pluck("suite").join(', ') }" %>
+	<%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("address").pluck("city").join(', ') }" %>
+	<%= "#{@users.select { |user| user["id"] == a["userId"]}.pluck("address").pluck("zipcode").join(', ')}" %>
+
+
 <% end %>
 
+
+<% @photos.each do |a| %>
+	<%= image_tag("#{a["thumbnailUrl"]}") %>
+<% end %>
+
+<%#= @album[0]["title"]  %>
+<%#= @album[0]["userId"]  %>
 <%#= @album[0]["title"]  %>

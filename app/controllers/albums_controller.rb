@@ -3,14 +3,15 @@ class AlbumsController < ApplicationController
 
   def index
     @albums = Album.new.all
-
-    @user = Album.new.users
+    @users = Album.new.users
+    @photos = Album.new.photos
     # api = Album.new()
     # @albums = api.albums
   end
 
   def show
-
+    @users = Album.new.users
+    @photos = Album.new.photos.select { |photo| photo["albumId"] == params[:id].to_i }
   end
 
   private
