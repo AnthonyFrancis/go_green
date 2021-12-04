@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise', '~> 4.7', '>= 4.7.2'
 gem 'httparty'
 gem 'json'
+# gem 'pagy', '~> 3.5'
+gem 'will_paginate', '~> 3.3'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
