@@ -1,35 +1,21 @@
 <% @albums.each do |album| %>
-<article class="border w-2/4 mx-auto border-gray-400 rounded-lg md:p-4 bg-white sm:py-3 py-4 px-2 m-10" data-article-path="/hagnerd/setting-up-tailwind-with-create-react-app-4jd" data-content-user-id="112962">
-  <div role="presentation">
-      <div>
-        <div class="pl-10">
-          <div class="flex items-center">
-            <%= image_tag("#{ @photos.select { |a| a["albumId"] == album["id"]}.pluck("thumbnailUrl").first}") %>
-              <div>
-                <p> 
-                  <%= link_to "#{ @users.select { |a| a["id"] == album["userId"]}.pluck("name").join(', ')}", user_path(album["userId"]), class: "text text-gray-700 text-sm" %>
-                </p>
-              </div>
-          </div>
-        </div>
-        <div class="pl-12 md:pl-10 xs:pl-10">
-          <h2 class="text-2xl font-bold mb-2 leading-7">
-              <%= album["title"] %>
-          </h2>
-          
-          <div class="flex justify-end items-center">
-              <div class="flex items-center">                
-                <%= link_to "Show", album_path(album["id"]), class: "bg-gray-400 rounded text-sm px-3 py-2 text-current hover:text-black hover:bg-gray-500" %>
-              </div>
-          </div>
-        </div>
+<div class="card border w-4/12 hover:shadow-none relative flex flex-col mx-auto shadow-lg m-5">
+    <img class="max-h-20 w-full opacity-80 absolute top-0" style="z-index:-1" src="https://unsplash.com/photos/h0Vxgz5tyXA/download?force=true&w=640" alt="" />
+    <div class="profile w-full flex m-3 ml-4 text-white">
+      <%= image_tag("#{ @photos.select { |a| a["albumId"] == album["id"]}.pluck("thumbnailUrl").first}", class: "w-28 h-28 p-1 bg-white rounded-full" ) %>
+      <div class="title mt-11 ml-3 font-bold flex flex-col">
+        <div class="name break-words text-black"><%= link_to "#{ @users.select { |a| a["id"] == album["userId"]}.pluck("name").join(', ')}", user_path(album["userId"]) %></div>
+        <!--  add [dark] class for bright background -->
+        <div class="add font-semibold text-sm italic text-black"><%= album["title"] %></div>
+      </div>
+    </div>
+    <div class="buttons flex absolute bottom-0 font-bold right-0 text-xs text-gray-500 space-x-0 my-3.5 mr-3">
+      <%= link_to "Show", album_path(album["id"]), class: "add border rounded-2xl rounded-sm border-gray-300 p-1 px-4 cursor-pointer hover:bg-gray-700 hover:text-white" %>
+      <!-- <div class="add border rounded-r-2xl rounded-l-sm border-gray-300 p-1 px-4 cursor-pointer hover:bg-gray-700 hover:text-white">Bio</div> -->
     </div>
   </div>
-</article>
 <% end %>
 
-<div class="flex flex-wrap lg:px-24 container m-auto text-center">
-  <div class="w-full md:w-2/3 pr-0 md:pr-6 mb-6 inline">
+<div class="container mx-auto items-center text-center">
     <%= will_paginate %>
-  </div>
 </div>
