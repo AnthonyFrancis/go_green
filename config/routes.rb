@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   get 'users/index'
   get 'users/show'
+
+  namespace :api do 
+    resources :albums 
+    resources :users 
+  end
+
   resources :albums 
   resources :users 
 
