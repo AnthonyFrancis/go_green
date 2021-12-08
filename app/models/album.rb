@@ -1,5 +1,5 @@
-class Album < ApplicationRecord
-  belongs_to :user
+class Album
+  # belongs_to :user
 
   include HTTParty
 	base_uri 'https://jsonplaceholder.typicode.com'

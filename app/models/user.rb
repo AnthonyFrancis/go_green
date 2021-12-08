@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class User
 	include HTTParty
 	base_uri 'https://jsonplaceholder.typicode.com'
 
@@ -11,7 +11,7 @@ class User < ApplicationRecord
 		self.class.get("/albums" )
 	end
 
-	has_many :albums
+	# has_many :albums
   	
 	# def self.albums 
 	# 	response  = HTTParty.get('https://jsonplaceholder.typicode.com/albums')

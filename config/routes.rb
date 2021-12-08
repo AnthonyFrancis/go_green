@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   get 'users/index'
   get 'users/show'
   resources :albums 
-
   resources :users 
 
   root to: "albums#index"
